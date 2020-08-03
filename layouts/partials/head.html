@@ -17,6 +17,7 @@
   {{ if .Site.Params.themeVersion }}
     {{ .Scratch.Set "themeversion" .Site.Params.themeVersion }}
   {{ end }}
+  {{ $themeversion := .Scratch.Get "themeversion" }}
   <link rel="stylesheet" href="{{ printf "/lib/font-awesome/css/all.min.css?%s" $themeversion }}">
   <link rel="stylesheet" href="{{ printf "css/style-%s.css?%s" $colortheme $themeversion | absURL }}">
   {{ `
