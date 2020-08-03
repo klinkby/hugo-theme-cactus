@@ -23,6 +23,7 @@
   {{ if .Site.Params.themeVersion }}
   {{ .Scratch.Set "themeversion" .Site.Params.themeVersion }}
   {{ end }}
+  {{ $themeversion := .Scratch.Get "themeversion" }}
   <script src="{{ printf "/lib/jquery/jquery.min.js?%s" $themeversion }}"></script>
   <script src="{{ printf "/js/main.js?%s" $themeversion }}"></script>
 </body>
