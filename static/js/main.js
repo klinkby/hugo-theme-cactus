@@ -110,4 +110,12 @@ $(document).ready(function() {
       });
     }
   }
+
+  // wrap post headers in anchor tags for deep linking
+  $('article .content h2').filter('[id]').each(function () {
+      var header      = $(this),
+          headerID    = header.attr('id');
+        header.wrapInner($('<a/>').addClass('anchor').attr({ 'href': '#' + headerID, 'aria-hidden': 'true' }) );
+  });
+
 });
