@@ -462,7 +462,7 @@
     color: #383838;
     font-display: swap;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1rem;
     font-family: "iosevka", monospace;
     line-height: 1.725;
     text-rendering: geometricPrecision;
@@ -597,10 +597,10 @@
     display: inline-block;
     float: left;
     margin-right: 20px;
-    width: 50px;
-    height: 50px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 5px;
-    background-size: 50px 50px;
+    background-size: 3rem 3rem;
     background-repeat: no-repeat;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
@@ -1063,7 +1063,7 @@
     margin-right: 16px;
     min-width: 100px;
     color: #666;
-    font-size: 14px;
+    font-size: 1rem;
   }
   @media (min-width: 480px) {
     .post-list .post-item {
@@ -1239,7 +1239,7 @@
     margin-right: 16px;
     min-width: 100px;
     color: #666;
-    font-size: 14px;
+    font-size: 1rem;
   }
   @media (min-width: 480px) {
     #archive .post-list .post-item {
