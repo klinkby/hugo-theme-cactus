@@ -10,7 +10,7 @@ Some works are still in progress. See [TODOS](#todos) below.
 
 1. clone cactus to your hugo site's `themes` folder.
 ```
-git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes\cactus
+git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes/cactus
 ```
 
 2. change your theme to cactus in your site config
@@ -37,6 +37,16 @@ hugo server
 
   colortheme = "white" # dark, light, white, or classic
 ```
+
+### Custom CSS
+
+```toml
+[params]
+  css = ["css/custom.css"]
+```
+
+You can add multiple custom stylesheets which will be loaded after the main theme css.
+For example, the above line will load the CSS-file placed at `/static/css/custom.css`.
 
 ### Navigation
 
@@ -189,7 +199,7 @@ disqusShortname = "wzr" # cactus will use site title if not set
 
 ### highlight
 
-Use hugo's bulit-in [syntax highlighting](https://gohugo.io/getting-started/configuration-markup#highlight).
+Use hugo's built-in [syntax highlighting](https://gohugo.io/getting-started/configuration-markup#highlight).
 
 default config:
 
