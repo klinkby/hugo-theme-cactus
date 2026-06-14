@@ -9,7 +9,7 @@
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <title>{{ if .IsPage }} {{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   <link rel = 'canonical' href = '{{ .Permalink }}'>
-  {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
@@ -18,7 +18,6 @@
     {{ .Scratch.Set "colortheme" .Site.Params.Colortheme }}
   {{ end }}
   {{ $colortheme := .Scratch.Get "colortheme" }}
-
   {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
   {{- $styles := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "scss/style.scss" . | css.Sass $options | resources.Fingerprint "sha512" }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}"> <!-- integrity="{{ $styles.Data.Integrity }}" -->
@@ -38,4 +37,10 @@
     {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
   {{ end }}
   {{ end }}
+
+  <meta property="og:title" content="{{ .Title }}" >
+  <meta property="og:image" content="{{ with (findRE `<img[^>]+src=['\"]([^'\"]+)['\"]` .Content) }}{{ $image := (index . 0 | replaceRE `.*src=['\"]([^'\"]+)['\"].*` `$1`) }}{{ $image | path.Clean | absURL }}{{ else }}{{ .Site.Params.defaultImage | absURL }}{{ end }}">
+  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+  <meta property="og:type" content="article" >
+  <meta property="og:url" content="{{ .Permalink }}" >
 </head>
